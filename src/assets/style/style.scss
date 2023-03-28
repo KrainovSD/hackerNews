@@ -1,0 +1,22 @@
+@import "./_custom";
+@import "./_const";
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #eae5e4;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
+}
+.container {
+  @extend %variable-maxWidth;
+  margin: 0 auto;
+}
+.workplace {
+  width: 100%;
+  min-height: calc(100vh - 160px);
+  padding: 20px 30px;
+  @media (max-width: 479px) {
+    padding: 20px 10px;
+  }
+}
