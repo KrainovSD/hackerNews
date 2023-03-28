@@ -38,7 +38,9 @@ class Comments {
         this.comments[id] = response.data;
       });
     } catch (e) {
-      this.error = "При загрузке информации о новости произошла ошибка";
+      runInAction(() => {
+        this.error = "При загрузке информации о комментарии произошла ошибка";
+      });
     }
   }
 }

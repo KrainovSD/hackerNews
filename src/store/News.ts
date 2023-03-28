@@ -88,10 +88,12 @@ class News {
       this.repeatableGetNewsList();
     } catch (error) {
       this.clearAllTimers();
-      this.timer = "ошибка при загрузке";
-      this.isLoadingNews = false;
-      this.isFetchingNews = false;
-      this.error = "При загрузке информации о всех новостях произошла ошибка";
+      runInAction(() => {
+        this.timer = "ошибка при загрузке";
+        this.isLoadingNews = false;
+        this.isFetchingNews = false;
+        this.error = "При загрузке информации о всех новостях произошла ошибка";
+      });
     }
   }
   get limitNewsList() {
@@ -104,11 +106,15 @@ class News {
       if (this.isLoadingCurrentNews) return;
       this.isLoadingCurrentNews = true;
       const response = await axiosInstance.get<INews>(getLinkOneNews(id));
-      this.currentNews = response.data;
-      this.isLoadingCurrentNews = false;
+      runInAction(() => {
+        this.currentNews = response.data;
+        this.isLoadingCurrentNews = false;
+      });
     } catch (e) {
-      this.isLoadingCurrentNews = false;
-      this.error = "При загрузке информации о новости произошла ошибка";
+      runInAction(() => {
+        this.isLoadingCurrentNews = false;
+        this.error = "При загрузке информации о новости произошла ошибка";
+      });
     }
   }
 }

@@ -36,7 +36,10 @@ export const NewsInfo: React.FC = observer(() => {
   if (News.currentNews === null || `${News.currentNews?.id}` != id)
     return (
       <div className="news-info__not-found">
-        Информация о новости не найдена!
+        <p>Информация о новости не найдена</p>
+        <div className="_button">
+          <BlackButton onClick={loadInfo}>Повторить попытку</BlackButton>
+        </div>
       </div>
     );
 
